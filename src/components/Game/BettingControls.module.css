@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--border-radius);
+}
+
+.betAmount {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--gold-accent);
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.chipButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.chipButton:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.chip10 {
+  background: radial-gradient(circle, #0066cc 0%, #004499 100%);
+}
+
+.chip25 {
+  background: radial-gradient(circle, #00cc00 0%, #009900 100%);
+}
+
+.chip50 {
+  background: radial-gradient(circle, #cc0000 0%, #990000 100%);
+}
+
+.chip100 {
+  background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+}
+
+.dealButton {
+  padding: 16px 48px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: var(--border-radius);
+  background: var(--gold-accent);
+  color: var(--text-dark);
+  box-shadow: var(--shadow-lg);
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+}
+
+.dealButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #ffed4e;
+}
+
+.dealButton:disabled {
+  background: #666;
+  color: #999;
+}
+
+.shortcut {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-left: 8px;
+}

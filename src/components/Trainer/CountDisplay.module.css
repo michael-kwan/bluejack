@@ -1,0 +1,64 @@
+.container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid var(--gold-accent);
+  border-radius: var(--border-radius);
+  padding: 1rem 1.5rem;
+  min-width: 200px;
+  box-shadow: var(--shadow-lg);
+}
+
+.header {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--gold-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.counts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.countRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.value {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text-light);
+}
+
+.value.positive {
+  color: var(--chip-green);
+}
+
+.value.negative {
+  color: var(--chip-red);
+}
+
+.info {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.decksRemaining {
+  display: flex;
+  justify-content: space-between;
+}

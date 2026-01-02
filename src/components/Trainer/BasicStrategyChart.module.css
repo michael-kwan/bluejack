@@ -1,0 +1,120 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.container {
+  background: rgba(26, 26, 26, 0.95);
+  border: 3px solid var(--gold-accent);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--gold-accent);
+}
+
+.closeButton {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 14px;
+}
+
+.legendColor {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 35px;
+}
+
+.table th {
+  background: rgba(255, 215, 0, 0.2);
+  color: var(--gold-accent);
+  font-weight: bold;
+}
+
+.cell {
+  font-weight: bold;
+  color: #fff;
+}
+
+.hit {
+  background: #cc0000;
+}
+
+.stand {
+  background: #00cc00;
+}
+
+.double {
+  background: #ffd700;
+  color: #000;
+}
+
+.split {
+  background: #0066cc;
+}
+
+.sectionTitle {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--gold-accent);
+  text-align: left;
+}

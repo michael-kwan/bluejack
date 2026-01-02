@@ -1,0 +1,76 @@
+.container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid var(--gold-accent);
+  border-radius: var(--border-radius);
+  padding: 1rem 1.5rem;
+  min-width: 250px;
+  box-shadow: var(--shadow-lg);
+}
+
+.header {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--gold-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.label {
+  color: var(--text-muted);
+}
+
+.value {
+  font-weight: bold;
+  color: var(--text-light);
+}
+
+.value.positive {
+  color: var(--chip-green);
+}
+
+.value.negative {
+  color: var(--chip-red);
+}
+
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0.5rem 0;
+}
+
+.winRate {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.resetButton {
+  margin-top: 0.75rem;
+  padding: 8px 16px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  font-size: 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.resetButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
