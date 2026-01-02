@@ -23,6 +23,7 @@ const defaultSettings: Settings = {
     showTrueCount: true,
     soundEnabled: false,
     animationSpeed: 'normal',
+    dealDelay: 300, // milliseconds
   },
 };
 

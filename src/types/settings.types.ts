@@ -13,6 +13,7 @@ export interface DisplaySettings {
   showTrueCount: boolean;
   soundEnabled: boolean;
   animationSpeed: 'slow' | 'normal' | 'fast';
+  dealDelay: number; // milliseconds between card deals
 }
 
 export interface Settings {

@@ -6,6 +6,10 @@ export default function BasicStrategyChart() {
 
   if (!display.showBasicStrategy) return null;
 
+  const handleClose = () => {
+    updateDisplaySettings({ showBasicStrategy: false });
+  };
+
   const dealerCards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'A'];
 
   // Hard totals strategy (simplified basic strategy)
@@ -52,17 +56,12 @@ export default function BasicStrategyChart() {
     return '';
   };
 
-  const handleClose = () => {
-    updateDisplaySettings({ showBasicStrategy: false });
-  };
-
   return (
-    <div className={styles.overlay} onClick={handleClose}>
-      <div className={styles.container} onClick={(e) => e.stopPropagation()}>
+    <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Basic Strategy Chart</h2>
+          <h2 className={styles.title}>Basic Strategy</h2>
           <button className={styles.closeButton} onClick={handleClose}>
-            Close (B)
+            ✕
           </button>
         </div>
 
@@ -156,7 +155,6 @@ export default function BasicStrategyChart() {
             ))}
           </tbody>
         </table>
-      </div>
     </div>
   );
 }

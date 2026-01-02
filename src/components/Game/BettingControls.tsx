@@ -19,28 +19,28 @@ export default function BettingControls() {
           onClick={() => setBet(10)}
           disabled={!isBetting}
         >
-          $10
+          $10 <span className={styles.shortcut}>(1)</span>
         </button>
         <button
           className={`${styles.chipButton} ${styles.chip25}`}
           onClick={() => setBet(25)}
           disabled={!isBetting}
         >
-          $25
+          $25 <span className={styles.shortcut}>(2)</span>
         </button>
         <button
           className={`${styles.chipButton} ${styles.chip50}`}
           onClick={() => setBet(50)}
           disabled={!isBetting}
         >
-          $50
+          $50 <span className={styles.shortcut}>(5)</span>
         </button>
         <button
           className={`${styles.chipButton} ${styles.chip100}`}
           onClick={() => setBet(100)}
           disabled={!isBetting}
         >
-          $100
+          $100 <span className={styles.shortcut}>(0)</span>
         </button>
       </div>
       <button className={styles.dealButton} onClick={dealCards} disabled={!isBetting}>

@@ -17,6 +17,12 @@ export default function Header() {
         <div className={styles.buttons}>
           <button
             className={styles.button}
+            onClick={() => updateDisplaySettings({ showCount: !display.showCount })}
+          >
+            Count <span className={styles.shortcut}>(C)</span>
+          </button>
+          <button
+            className={styles.button}
             onClick={() => updateDisplaySettings({ showBasicStrategy: !display.showBasicStrategy })}
           >
             Strategy <span className={styles.shortcut}>(B)</span>

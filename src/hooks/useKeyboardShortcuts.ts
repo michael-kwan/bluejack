@@ -3,7 +3,7 @@ import { useGameStore } from '../store/gameStore';
 import { useSettingsStore } from '../store/settingsStore';
 
 export function useKeyboardShortcuts() {
-  const { phase, hit, stand, double, split, dealCards } = useGameStore();
+  const { phase, hit, stand, double, split, dealCards, placeBet } = useGameStore();
   const { display, updateDisplaySettings } = useSettingsStore();
 
   useEffect(() => {
@@ -33,6 +33,24 @@ export function useKeyboardShortcuts() {
         }
       }
 
+      // Bet amounts (during betting phase)
+      if (phase === 'betting') {
+        switch (key) {
+          case '1':
+            placeBet(10);
+            break;
+          case '2':
+            placeBet(25);
+            break;
+          case '5':
+            placeBet(50);
+            break;
+          case '0':
+            placeBet(100);
+            break;
+        }
+      }
+
       // Deal cards
       if (phase === 'betting' && (key === ' ' || key === 'enter')) {
         event.preventDefault();
@@ -55,5 +73,5 @@ export function useKeyboardShortcuts() {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [phase, hit, stand, double, split, dealCards, display, updateDisplaySettings]);
+  }, [phase, hit, stand, double, split, dealCards, placeBet, display, updateDisplaySettings]);
 }

@@ -24,10 +24,11 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   color: var(--text-light);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-md);
@@ -56,6 +57,12 @@
   background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
 }
 
+.shortcut {
+  font-size: 9px;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
 .dealButton {
   padding: 16px 48px;
   font-size: 20px;
@@ -79,7 +86,7 @@
   color: #999;
 }
 
-.shortcut {
+.dealButton .shortcut {
   font-size: 14px;
   opacity: 0.7;
   margin-left: 8px;

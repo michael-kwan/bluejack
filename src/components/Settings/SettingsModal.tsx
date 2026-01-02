@@ -92,6 +92,22 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               <div className={styles.toggleSlider} />
             </div>
           </div>
+
+          <div className={styles.setting}>
+            <span className={styles.settingLabel}>Card Deal Delay (ms)</span>
+            <select
+              className={styles.select}
+              value={display.dealDelay}
+              onChange={(e) =>
+                updateDisplaySettings({ dealDelay: parseInt(e.target.value) })
+              }
+            >
+              <option value={0}>None (0ms)</option>
+              <option value={100}>Fast (100ms)</option>
+              <option value={300}>Normal (300ms)</option>
+              <option value={500}>Slow (500ms)</option>
+            </select>
+          </div>
         </div>
 
         <div className={styles.actions}>

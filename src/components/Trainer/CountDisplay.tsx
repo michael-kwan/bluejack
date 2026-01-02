@@ -4,7 +4,7 @@ import styles from './CountDisplay.module.css';
 
 export default function CountDisplay() {
   const { shoe } = useGameStore();
-  const { display } = useSettingsStore();
+  const { display, updateDisplaySettings } = useSettingsStore();
 
   if (!display.showCount) return null;
 
@@ -18,9 +18,18 @@ export default function CountDisplay() {
     return '';
   };
 
+  const handleClose = () => {
+    updateDisplaySettings({ showCount: false });
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.header}>Card Count</div>
+      <div className={styles.header}>
+        <div className={styles.title}>Card Count</div>
+        <button className={styles.closeButton} onClick={handleClose}>
+          ✕
+        </button>
+      </div>
       <div className={styles.counts}>
         <div className={styles.countRow}>
           <span className={styles.label}>Running:</span>

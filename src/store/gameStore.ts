@@ -8,9 +8,8 @@ import {
   performSplit,
   resolveDealerHand,
   resolveHandResults,
-  dealInitialCards,
 } from '../engine/actions';
-import { getHandValue, hasDealerAce } from '../engine/hand';
+import { getHandValue, createHand } from '../engine/hand';
 import { useSettingsStore } from './settingsStore';
 import { useStatsStore } from './statsStore';
 
@@ -67,8 +66,10 @@ export const useGameStore = create<GameStore>()((set, get) => ({
 
   placeBet: (bet) => set({ currentBet: bet }),
 
-  dealCards: () => {
+  dealCards: async () => {
     const state = get();
+    const settings = useSettingsStore.getState();
+    const delay = settings.display.dealDelay;
 
     if (state.phase !== 'betting') return;
 
@@ -82,24 +83,66 @@ export const useGameStore = create<GameStore>()((set, get) => ({
       return;
     }
 
-    // Deal initial cards
-    const { playerHands, dealerHand } = dealInitialCards(
-      state.shoe,
-      1, // Start with 1 hand, user can add more later
-      state.currentBet
-    );
+    // Initialize empty hands
+    const playerHand = createHand(state.currentBet);
+    const dealerHand = createHand(0);
 
     set({
-      playerHands,
+      playerHands: [playerHand],
       dealerHand,
       currentHandIndex: 0,
-      phase: hasDealerAce(dealerHand) ? 'insurance' : 'player-turn',
+      phase: 'dealing',
       roundNumber: state.roundNumber + 1,
+    });
+
+    // Helper to deal a card with delay
+    const dealCardWithDelay = (delayMs: number) =>
+      new Promise(resolve => setTimeout(resolve, delayMs));
+
+    // Deal cards one at a time: player, dealer, player, dealer (face down)
+    // First card to player
+    await dealCardWithDelay(delay);
+    playerHand.cards.push(state.shoe.deal());
+    set({
+      playerHands: [{ ...playerHand }],
       dealtCards: state.shoe.dealtCards,
     });
 
+    // First card to dealer (face up)
+    await dealCardWithDelay(delay);
+    dealerHand.cards.push(state.shoe.deal());
+    set({
+      dealerHand: { ...dealerHand },
+      dealtCards: state.shoe.dealtCards,
+    });
+
+    // Second card to player
+    await dealCardWithDelay(delay);
+    playerHand.cards.push(state.shoe.deal());
+    set({
+      playerHands: [{ ...playerHand }],
+      dealtCards: state.shoe.dealtCards,
+    });
+
+    // Second card to dealer (face down)
+    await dealCardWithDelay(delay);
+    const faceDownCard = state.shoe.deal();
+    faceDownCard.faceDown = true;
+    dealerHand.cards.push(faceDownCard);
+    set({
+      dealerHand: { ...dealerHand },
+      dealtCards: state.shoe.dealtCards,
+    });
+
+    // Mark player hand as active
+    playerHand.isActive = true;
+    set({
+      playerHands: [{ ...playerHand }],
+      phase: 'player-turn',
+    });
+
     // Check for player blackjack
-    const playerValue = getHandValue(playerHands[0]);
+    const playerValue = getHandValue(playerHand);
     const dealerValue = getHandValue(dealerHand);
 
     if (playerValue.isBlackjack || dealerValue.isBlackjack) {

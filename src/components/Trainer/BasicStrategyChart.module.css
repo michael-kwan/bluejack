@@ -1,36 +1,28 @@
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 2rem;
-}
-
 .container {
-  background: rgba(26, 26, 26, 0.95);
+  position: fixed;
+  top: 80px;
+  left: 20px;
+  background: rgba(13, 60, 32, 0.92);
   border: 3px solid var(--gold-accent);
   border-radius: var(--border-radius);
-  padding: 2rem;
-  max-width: 900px;
-  max-height: 90vh;
+  padding: 1.5rem;
+  max-width: 600px;
+  max-height: calc(100vh - 100px);
   overflow: auto;
+  z-index: 500;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .title {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
   color: var(--gold-accent);
 }
@@ -50,36 +42,36 @@
 
 .legend {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 
 .legendItem {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 14px;
+  gap: 0.4rem;
+  font-size: 11px;
 }
 
 .legendColor {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
 }
 
 .table {
   border-collapse: collapse;
   width: 100%;
-  font-size: 14px;
+  font-size: 11px;
 }
 
 .table th,
 .table td {
-  padding: 8px;
+  padding: 4px 6px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  min-width: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  min-width: 28px;
 }
 
 .table th {
@@ -111,9 +103,9 @@
 }
 
 .sectionTitle {
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-size: 16px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 14px;
   font-weight: bold;
   color: var(--gold-accent);
   text-align: left;
