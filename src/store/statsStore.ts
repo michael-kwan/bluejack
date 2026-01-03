@@ -19,6 +19,7 @@ const defaultStats: Stats = {
     blackjacks: 0,
     totalWagered: 0,
     totalWinnings: 0,
+    currentBankroll: 100,
     sessionStartTime: Date.now(),
     sessionDuration: 0,
   },
@@ -42,6 +43,10 @@ export const useStatsStore = create<StatsStore>()(
           const newSession = { ...state.session };
           newSession.handsPlayed++;
           newSession.totalWagered += result.bet;
+
+          // Update bankroll: subtract bet, add payout
+          newSession.currentBankroll -= result.bet;
+          newSession.currentBankroll += result.payout;
 
           if (result.result === 'win') {
             newSession.handsWon++;

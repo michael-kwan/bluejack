@@ -1,14 +1,47 @@
 import { useSettingsStore } from '../../store/settingsStore';
+import { useGameStore } from '../../store/gameStore';
+import { getHandValue } from '../../engine/hand';
+import { getCardValue } from '../../engine/card';
 import styles from './BasicStrategyChart.module.css';
 
 export default function BasicStrategyChart() {
   const { display, updateDisplaySettings } = useSettingsStore();
+  const { playerHands, currentHandIndex, dealerHand, phase } = useGameStore();
 
   if (!display.showBasicStrategy) return null;
 
   const handleClose = () => {
     updateDisplaySettings({ showBasicStrategy: false });
   };
+
+  // Get current game state for highlighting
+  const currentHand = playerHands[currentHandIndex];
+  const isPlayerTurn = phase === 'player-turn';
+  let currentPlayerValue = '';
+  let currentDealerCard = '';
+
+  if (isPlayerTurn && currentHand && dealerHand.cards[0]) {
+    const handValue = getHandValue(currentHand);
+    const dealerUpCard = getCardValue(dealerHand.cards[0].rank);
+    const isPair = currentHand.cards.length === 2 &&
+                   getCardValue(currentHand.cards[0].rank) === getCardValue(currentHand.cards[1].rank);
+
+    // Map dealer card to column
+    currentDealerCard = dealerUpCard === 11 ? 'A' : dealerUpCard.toString();
+
+    // Map player hand to row
+    if (isPair) {
+      const cardValue = getCardValue(currentHand.cards[0].rank);
+      currentPlayerValue = `${cardValue === 11 ? 'A' : cardValue},${cardValue === 11 ? 'A' : cardValue}`;
+    } else if (handValue.isSoft && handValue.value < 21) {
+      currentPlayerValue = `A,${handValue.value - 11}`;
+    } else {
+      currentPlayerValue = handValue.value >= 17 ? '17+' :
+                           handValue.value >= 13 && handValue.value <= 14 ? '13-14' :
+                           handValue.value <= 8 ? '5-8' :
+                           handValue.value.toString();
+    }
+  }
 
   const dealerCards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'A'];
 
@@ -48,12 +81,17 @@ export default function BasicStrategyChart() {
     { player: '2,2-3,3', actions: ['P', 'P', 'P', 'P', 'P', 'P', 'H', 'H', 'H', 'H'] },
   ];
 
-  const getCellClass = (action: string) => {
-    if (action === 'H') return styles.hit;
-    if (action === 'S') return styles.stand;
-    if (action === 'D') return styles.double;
-    if (action === 'P') return styles.split;
-    return '';
+  const getCellClass = (action: string, playerValue: string, dealerCard: string) => {
+    const baseClass = action === 'H' ? styles.hit :
+                      action === 'S' ? styles.stand :
+                      action === 'D' ? styles.double :
+                      action === 'P' ? styles.split : '';
+
+    const isCurrentCell = isPlayerTurn &&
+                          playerValue === currentPlayerValue &&
+                          dealerCard === currentDealerCard;
+
+    return `${baseClass} ${isCurrentCell ? styles.currentCell : ''}`;
   };
 
   return (
@@ -99,7 +137,7 @@ export default function BasicStrategyChart() {
               <tr key={row.player}>
                 <th>{row.player}</th>
                 {row.actions.map((action, i) => (
-                  <td key={i} className={`${styles.cell} ${getCellClass(action)}`}>
+                  <td key={i} className={`${styles.cell} ${getCellClass(action, row.player, dealerCards[i])}`}>
                     {action}
                   </td>
                 ))}
@@ -123,7 +161,7 @@ export default function BasicStrategyChart() {
               <tr key={row.player}>
                 <th>{row.player}</th>
                 {row.actions.map((action, i) => (
-                  <td key={i} className={`${styles.cell} ${getCellClass(action)}`}>
+                  <td key={i} className={`${styles.cell} ${getCellClass(action, row.player, dealerCards[i])}`}>
                     {action}
                   </td>
                 ))}
@@ -147,7 +185,7 @@ export default function BasicStrategyChart() {
               <tr key={row.player}>
                 <th>{row.player}</th>
                 {row.actions.map((action, i) => (
-                  <td key={i} className={`${styles.cell} ${getCellClass(action)}`}>
+                  <td key={i} className={`${styles.cell} ${getCellClass(action, row.player, dealerCards[i])}`}>
                     {action}
                   </td>
                 ))}

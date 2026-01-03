@@ -6,6 +6,7 @@ export interface SessionStats {
   blackjacks: number;
   totalWagered: number;
   totalWinnings: number;
+  currentBankroll: number;
   sessionStartTime: number;
   sessionDuration: number;
 }

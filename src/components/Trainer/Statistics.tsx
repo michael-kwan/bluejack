@@ -25,6 +25,13 @@ export default function Statistics() {
       <div className={styles.header}>Session Stats</div>
       <div className={styles.stats}>
         <div className={styles.statRow}>
+          <span className={styles.label}>Bankroll:</span>
+          <span className={`${styles.value} ${styles.winRate} ${session.currentBankroll >= 100 ? styles.positive : styles.negative}`}>
+            ${session.currentBankroll}
+          </span>
+        </div>
+        <div className={styles.divider} />
+        <div className={styles.statRow}>
           <span className={styles.label}>Hands Played:</span>
           <span className={styles.value}>{session.handsPlayed}</span>
         </div>

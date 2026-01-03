@@ -71,13 +71,14 @@ export const useGameStore = create<GameStore>()((set, get) => ({
     const settings = useSettingsStore.getState();
     const delay = settings.display.dealDelay;
 
-    if (state.phase !== 'betting') return;
+    if (state.phase !== 'betting' && state.phase !== 'shuffle') return;
 
     // Check if shoe needs reshuffle
     if (state.shoe.needsReshuffle()) {
       state.shoe.reset();
       set({ phase: 'shuffle', dealtCards: [] });
       setTimeout(() => {
+        set({ phase: 'betting' });
         get().dealCards();
       }, 1000);
       return;

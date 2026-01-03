@@ -68,6 +68,20 @@
   margin-left: 4px;
 }
 
+.recommended {
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.8);
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0.5rem;
