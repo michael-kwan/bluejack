@@ -297,6 +297,17 @@ export const useGameStore = create<GameStore>()((set, get) => ({
         runningCount: state.shoe.getRunningCount(),
         trueCount: state.shoe.getTrueCount(),
       });
+
+      // Record hand history with card details
+      stats.recordHandHistory({
+        playerCards: hand.cards,
+        dealerCards: finalDealerHand.cards,
+        playerValue: playerValue.value,
+        dealerValue: dealerValue.value,
+        result: hand.result!,
+        bet: hand.bet,
+        payout: hand.payout || 0,
+      });
     });
 
     // Auto-start new round after delay

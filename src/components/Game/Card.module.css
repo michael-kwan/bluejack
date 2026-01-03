@@ -57,3 +57,26 @@
   right: 8px;
   transform: rotate(180deg);
 }
+
+@media (max-width: 768px) {
+  .card {
+    width: 60px;
+    height: 84px;
+  }
+
+  .rank {
+    font-size: 20px;
+    top: 4px;
+    left: 4px;
+  }
+
+  .suit {
+    font-size: 36px;
+  }
+
+  .miniRank {
+    font-size: 14px;
+    bottom: 4px;
+    right: 4px;
+  }
+}

@@ -74,3 +74,22 @@
 .result.blackjack {
   color: var(--gold-accent);
 }
+
+@media (max-width: 768px) {
+  .handContainer {
+    padding: 0.75rem;
+    min-width: 150px;
+  }
+
+  .value {
+    font-size: 18px;
+  }
+
+  .bet {
+    font-size: 14px;
+  }
+
+  .result {
+    font-size: 16px;
+  }
+}

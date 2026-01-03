@@ -110,3 +110,37 @@
   color: var(--gold-accent);
   text-align: left;
 }
+
+@media (max-width: 768px) {
+  .container {
+    top: 55px;
+    left: 10px;
+    right: 10px;
+    max-width: calc(100vw - 20px);
+    padding: 1rem;
+    max-height: calc(100vh - 75px);
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .table {
+    font-size: 9px;
+  }
+
+  .table th,
+  .table td {
+    padding: 3px 4px;
+    min-width: 22px;
+  }
+
+  .legendItem {
+    font-size: 10px;
+  }
+
+  .legendColor {
+    width: 14px;
+    height: 14px;
+  }
+}

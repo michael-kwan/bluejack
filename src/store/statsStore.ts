@@ -4,6 +4,7 @@ import { Stats, HandResult } from '../types/stats.types';
 
 interface StatsStore extends Stats {
   recordHandResult: (result: HandResult) => void;
+  recordHandHistory: (entry: Omit<import('../types/stats.types').HandHistoryEntry, 'id' | 'timestamp'>) => void;
   recordCountCheck: (userCount: number, actualCount: number) => void;
   resetSession: () => void;
   resetAllStats: () => void;
@@ -28,6 +29,7 @@ const defaultStats: Stats = {
     runningCountHistory: [],
     trueCountHistory: [],
   },
+  handHistory: [],
 };
 
 export const useStatsStore = create<StatsStore>()(
@@ -64,6 +66,22 @@ export const useStatsStore = create<StatsStore>()(
           return {
             session: newSession,
             counting: newCounting,
+          };
+        }),
+
+      recordHandHistory: (entry) =>
+        set((state) => {
+          const newEntry = {
+            ...entry,
+            id: crypto.randomUUID(),
+            timestamp: Date.now(),
+          };
+
+          // Keep only last 10 hands in history
+          const newHistory = [newEntry, ...state.handHistory].slice(0, 10);
+
+          return {
+            handHistory: newHistory,
           };
         }),
 

@@ -28,7 +28,20 @@ export interface HandResult {
   trueCount: number;
 }
 
+export interface HandHistoryEntry {
+  id: string;
+  playerCards: import('./card.types').Card[];
+  dealerCards: import('./card.types').Card[];
+  playerValue: number;
+  dealerValue: number;
+  result: 'win' | 'lose' | 'push' | 'blackjack';
+  bet: number;
+  payout: number;
+  timestamp: number;
+}
+
 export interface Stats {
   session: SessionStats;
   counting: CountingStats;
+  handHistory: HandHistoryEntry[];
 }

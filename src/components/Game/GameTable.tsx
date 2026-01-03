@@ -6,6 +6,7 @@ import BettingControls from './BettingControls';
 import CountDisplay from '../Trainer/CountDisplay';
 import Statistics from '../Trainer/Statistics';
 import BasicStrategyChart from '../Trainer/BasicStrategyChart';
+import HandHistory from '../Trainer/HandHistory';
 import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
 import styles from './GameTable.module.css';
 
@@ -33,6 +34,7 @@ export default function GameTable() {
       <CountDisplay />
       <Statistics />
       <BasicStrategyChart />
+      <HandHistory />
 
       {phase === 'shuffle' && (
         <div className={styles.shuffleMessage}>

@@ -84,3 +84,28 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media (max-width: 768px) {
+  .container {
+    top: 55px;
+    right: 10px;
+    padding: 0.75rem 1rem;
+    min-width: 160px;
+  }
+
+  .title {
+    font-size: 12px;
+  }
+
+  .value {
+    font-size: 20px;
+  }
+
+  .label {
+    font-size: 11px;
+  }
+
+  .info {
+    font-size: 10px;
+  }
+}

@@ -84,3 +84,32 @@
     transform: translate(-50%, -50%) scale(1.1);
   }
 }
+
+@media (max-width: 768px) {
+  .table {
+    padding: 1rem;
+    padding-top: 60px;
+  }
+
+  .dealerArea {
+    padding-top: 1rem;
+  }
+
+  .playerArea {
+    gap: 1rem;
+  }
+
+  .playerHands {
+    gap: 1rem;
+  }
+
+  .phaseIndicator {
+    top: 55px;
+    font-size: 14px;
+    padding: 0.4rem 1rem;
+  }
+
+  .shuffleMessage {
+    font-size: 32px;
+  }
+}

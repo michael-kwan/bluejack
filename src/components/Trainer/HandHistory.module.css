@@ -1,0 +1,173 @@
+.container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(13, 60, 32, 0.92);
+  border: 3px solid var(--gold-accent);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 500;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--gold-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.handEntry {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.handEntry:last-child {
+  margin-bottom: 0;
+}
+
+.handInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.result {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.result.win {
+  background: var(--chip-green);
+  color: #000;
+}
+
+.result.lose {
+  background: var(--chip-red);
+  color: #fff;
+}
+
+.result.push {
+  background: var(--gold-accent);
+  color: #000;
+}
+
+.result.blackjack {
+  background: var(--gold-accent);
+  color: #000;
+}
+
+.bet {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 11px;
+}
+
+.cardRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: bold;
+  min-width: 50px;
+  color: var(--text-muted);
+}
+
+.cardList {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.miniCard {
+  background: white;
+  color: #000;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+
+.miniCard.red {
+  color: var(--red-suit);
+}
+
+.miniCard.black {
+  color: var(--black-suit);
+}
+
+.value {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-left: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    max-width: calc(100vw - 20px);
+    padding: 0.75rem;
+  }
+
+  .title {
+    font-size: 12px;
+  }
+
+  .handEntry {
+    padding: 0.5rem;
+  }
+
+  .result {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .bet {
+    font-size: 10px;
+  }
+
+  .cards {
+    font-size: 10px;
+  }
+
+  .label {
+    min-width: 45px;
+    font-size: 10px;
+  }
+
+  .miniCard {
+    font-size: 9px;
+    padding: 1px 3px;
+  }
+
+  .value {
+    font-size: 10px;
+  }
+}

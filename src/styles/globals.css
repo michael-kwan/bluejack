@@ -110,3 +110,14 @@ input {
 .gap-4 {
   gap: 2rem;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  #root {
+    overflow-y: auto;
+  }
+}

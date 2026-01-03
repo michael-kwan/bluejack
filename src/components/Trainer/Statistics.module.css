@@ -74,3 +74,25 @@
 .resetButton:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+@media (max-width: 768px) {
+  .container {
+    bottom: 10px;
+    right: 10px;
+    padding: 0.75rem 1rem;
+    min-width: 200px;
+  }
+
+  .header {
+    font-size: 12px;
+  }
+
+  .statRow {
+    font-size: 11px;
+  }
+
+  .resetButton {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+}
