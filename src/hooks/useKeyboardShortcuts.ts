@@ -65,6 +65,12 @@ export function useKeyboardShortcuts() {
         case 'b':
           updateDisplaySettings({ showBasicStrategy: !display.showBasicStrategy });
           break;
+        case 'r':
+          updateDisplaySettings({ showHandHistory: !display.showHandHistory });
+          break;
+        case 't':
+          updateDisplaySettings({ showStatistics: !display.showStatistics });
+          break;
         case '?':
           // TODO: Show keyboard help modal
           break;

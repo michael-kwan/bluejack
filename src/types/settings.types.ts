@@ -11,6 +11,8 @@ export interface DisplaySettings {
   showBasicStrategy: boolean;
   showCount: boolean;
   showTrueCount: boolean;
+  showHandHistory: boolean;
+  showStatistics: boolean;
   soundEnabled: boolean;
   animationSpeed: 'slow' | 'normal' | 'fast';
   dealDelay: number; // milliseconds between card deals

@@ -27,6 +27,18 @@ export default function Header() {
           >
             Strategy <span className={styles.shortcut}>(B)</span>
           </button>
+          <button
+            className={styles.button}
+            onClick={() => updateDisplaySettings({ showHandHistory: !display.showHandHistory })}
+          >
+            History <span className={styles.shortcut}>(R)</span>
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => updateDisplaySettings({ showStatistics: !display.showStatistics })}
+          >
+            Stats <span className={styles.shortcut}>(T)</span>
+          </button>
           <button className={styles.button} onClick={() => setShowSettings(true)}>
             Settings
           </button>

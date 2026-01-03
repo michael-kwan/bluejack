@@ -21,6 +21,8 @@ const defaultSettings: Settings = {
     showBasicStrategy: false,
     showCount: true,
     showTrueCount: true,
+    showHandHistory: true,
+    showStatistics: true,
     soundEnabled: false,
     animationSpeed: 'normal',
     dealDelay: 300, // milliseconds

@@ -1,9 +1,14 @@
 import { useStatsStore } from '../../store/statsStore';
+import { useSettingsStore } from '../../store/settingsStore';
 import { getSuitSymbol, getSuitColor } from '../../engine/card';
 import styles from './HandHistory.module.css';
 
 export default function HandHistory() {
   const { handHistory } = useStatsStore();
+  const { display } = useSettingsStore();
+
+  // Don't render if hidden
+  if (!display.showHandHistory) return null;
 
   // Show last 3 hands
   const recentHands = handHistory.slice(0, 3);

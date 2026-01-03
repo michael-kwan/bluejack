@@ -1,8 +1,13 @@
 import { useStatsStore } from '../../store/statsStore';
+import { useSettingsStore } from '../../store/settingsStore';
 import styles from './Statistics.module.css';
 
 export default function Statistics() {
   const { session, resetSession } = useStatsStore();
+  const { display } = useSettingsStore();
+
+  // Don't render if hidden
+  if (!display.showStatistics) return null;
 
   const winRate =
     session.handsPlayed > 0
