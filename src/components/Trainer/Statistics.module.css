@@ -1,13 +1,15 @@
 .container {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(0, 0, 0, 0.8);
-  border: 2px solid var(--gold-accent);
+  top: 80px;
+  left: 20px;
+  background: rgba(13, 60, 32, 0.92);
+  border: 3px solid var(--gold-accent);
   border-radius: var(--border-radius);
   padding: 1rem 1.5rem;
   min-width: 250px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 500;
 }
 
 .header {
@@ -77,8 +79,9 @@
 
 @media (max-width: 768px) {
   .container {
+    top: auto;
     bottom: 10px;
-    right: 10px;
+    left: 10px;
     padding: 0.75rem 1rem;
     min-width: 200px;
   }

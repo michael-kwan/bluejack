@@ -1,7 +1,7 @@
 .container {
   position: fixed;
   top: 80px;
-  left: 20px;
+  right: 280px;
   background: rgba(13, 60, 32, 0.92);
   border: 3px solid var(--gold-accent);
   border-radius: var(--border-radius);
@@ -109,6 +109,12 @@
   font-weight: bold;
   color: var(--gold-accent);
   text-align: left;
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+  .container {
+    right: 20px;
+  }
 }
 
 @media (max-width: 768px) {

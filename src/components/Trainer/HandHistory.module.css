@@ -1,7 +1,7 @@
 .container {
   position: fixed;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
   background: rgba(13, 60, 32, 0.92);
   border: 3px solid var(--gold-accent);
   border-radius: var(--border-radius);
@@ -130,8 +130,8 @@
 @media (max-width: 768px) {
   .container {
     bottom: 10px;
-    left: 10px;
     right: 10px;
+    left: auto;
     max-width: calc(100vw - 20px);
     padding: 0.75rem;
   }
