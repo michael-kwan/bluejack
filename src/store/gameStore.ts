@@ -130,6 +130,11 @@ export const useGameStore = create<GameStore>()((set, get) => ({
     const faceDownCard = state.shoe.deal();
     faceDownCard.faceDown = true;
     dealerHand.cards.push(faceDownCard);
+
+    // Remove face-down card from count until it's revealed
+    const dealtCardsWithoutHidden = state.shoe.dealtCards.slice(0, -1);
+    state.shoe.dealtCards = dealtCardsWithoutHidden;
+
     set({
       dealerHand: { ...dealerHand },
       dealtCards: state.shoe.dealtCards,
@@ -265,6 +270,12 @@ export const useGameStore = create<GameStore>()((set, get) => ({
     const state = get();
     const settings = useSettingsStore.getState();
     const stats = useStatsStore.getState();
+
+    // Add dealer's face-down card to count now that it's being revealed
+    const hiddenCard = state.dealerHand.cards.find(card => card.faceDown);
+    if (hiddenCard) {
+      state.shoe.dealtCards.push(hiddenCard);
+    }
 
     // Dealer plays
     const finalDealerHand = resolveDealerHand(
